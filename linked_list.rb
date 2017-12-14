@@ -4,20 +4,25 @@ class LinkedList
   end
 
   # Adds a new node to the end of the list
-  def append
-    # Start with the head
-    # Keep nexting until you reach the element that has a pointer to nil
-    # Add new element with pointer to nil and add a pointer to that element to the old last element
-  end
-
-  def to_s
-    # Start with the head
+  def append(new_value)
+    new_node = Node.new(new_value, nil)
     current = @head
-    # Keep nexting and printing until done
-    puts current
     until current.next_node == nil
       current = current.next_node
     end
+    current.next_node = new_node
+  end
+
+  # Displays a list of the nodes in a linked list in order, including value and next node pointer
+  def to_s
+    return_string = ''
+    current = @head
+    return_string += current.to_s + "\n"
+    until current.next_node == nil
+      current = current.next_node
+      return_string += current.to_s + "\n"
+    end
+    return_string
   end
 end
 
@@ -30,15 +35,18 @@ class Node
   end
 
   def to_s
-    "Value: #{@value} | Next Node: #{@next_node == nil ? 'nil' : @next_node}"
+    "Value: #{@value} | Next Node: #{@next_node == nil ? 'nil' : @next_node.value}"
   end
 end
 
 node1 = Node.new(1)
 #puts node1
-
 node2 = Node.new(2, 1)
 #puts node2
 
 linked_list = LinkedList.new(1)
+linked_list.append(2)
+linked_list.append(3)
+linked_list.append(4)
 puts linked_list
+
