@@ -30,6 +30,28 @@ class LinkedList
     count
   end
 
+  def head
+    @head
+  end
+
+  def tail
+    current = @head
+    until current.next_node == nil
+      current = current.next_node
+    end
+    current
+  end
+
+  def at(index)
+    current = @head
+    count = 0
+    until count == index
+      current = current.next_node
+      count += 1
+    end
+    current
+  end
+
   # Displays a list of the nodes in a linked list in order, including value and next node pointer
   def to_s
     return_string = ''
@@ -65,6 +87,10 @@ linked_list = LinkedList.new(1)
 linked_list.append(2)
 linked_list.append(3)
 linked_list.append(4)
-puts linked_list
 
-puts linked_list.size
+puts "Linked list: #{linked_list}"
+puts "Linked list length: #{linked_list.size}"
+puts "Linked list head: #{linked_list.head}"
+puts "Linked list tail: #{linked_list.tail}"
+puts "Linked list at position 1 (expecting node with value 2): #{linked_list.at(1)}"
+
