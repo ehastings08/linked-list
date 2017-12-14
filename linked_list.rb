@@ -52,6 +52,16 @@ class LinkedList
     current
   end
 
+  def pop
+    last_node = self.tail
+    current = @head
+    until current.next_node == last_node
+      current = current.next_node
+    end
+    current.next_node = nil
+    return last_node
+  end
+
   # Displays a list of the nodes in a linked list in order, including value and next node pointer
   def to_s
     return_string = ''
@@ -64,6 +74,7 @@ class LinkedList
     return_string
   end
 end
+
 
 class Node
   attr_accessor :value, :next_node
@@ -78,10 +89,8 @@ class Node
   end
 end
 
-node1 = Node.new(1)
-#puts node1
-node2 = Node.new(2, 1)
-#puts node2
+
+# Testing
 
 linked_list = LinkedList.new(1)
 linked_list.append(2)
@@ -93,4 +102,4 @@ puts "Linked list length: #{linked_list.size}"
 puts "Linked list head: #{linked_list.head}"
 puts "Linked list tail: #{linked_list.tail}"
 puts "Linked list at position 1 (expecting node with value 2): #{linked_list.at(1)}"
-
+puts "Popping the linked list results in #{linked_list.pop} and changes linked list to #{linked_list}"
