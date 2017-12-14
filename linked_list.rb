@@ -62,6 +62,16 @@ class LinkedList
     return last_node
   end
 
+  def contains?(check_value)
+    current = @head
+    found_element = false
+    until current.next_node == nil || found_element == true
+      current.value == check_value ? found_element = true : found_element = false
+      current = current.next_node
+    end
+    found_element
+  end
+
   # Displays a list of the nodes in a linked list in order, including value and next node pointer
   def to_s
     return_string = ''
@@ -98,8 +108,10 @@ linked_list.append(3)
 linked_list.append(4)
 
 puts "Linked list: #{linked_list}"
-puts "Linked list length: #{linked_list.size}"
-puts "Linked list head: #{linked_list.head}"
-puts "Linked list tail: #{linked_list.tail}"
-puts "Linked list at position 1 (expecting node with value 2): #{linked_list.at(1)}"
-puts "Popping the linked list results in #{linked_list.pop} and changes linked list to #{linked_list}"
+# puts "Linked list length: #{linked_list.size}"
+# puts "Linked list head: #{linked_list.head}"
+# puts "Linked list tail: #{linked_list.tail}"
+# puts "Linked list at position 1 (expecting node with value 2): #{linked_list.at(1)}"
+# puts "Popping the linked list results in #{linked_list.pop} and changes linked list to #{linked_list}"
+puts "Linked list contains 3 (true): #{linked_list.contains?(3)}"
+puts "Linked list contains 9 (false): #{linked_list.contains?(9)}"
