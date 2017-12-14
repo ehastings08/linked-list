@@ -13,6 +13,23 @@ class LinkedList
     current.next_node = new_node
   end
 
+  # Adds a new node to the start of the list
+  def prepend(new_value)
+    new_node = Node.new(new_value, @head)
+    @head = new_node
+  end
+
+  # Counts the number of nodes and returns them as size
+  def size
+    current = @head
+    count = 0
+    until current == nil
+      current = current.next_node
+      count += 1
+    end
+    count
+  end
+
   # Displays a list of the nodes in a linked list in order, including value and next node pointer
   def to_s
     return_string = ''
@@ -50,3 +67,4 @@ linked_list.append(3)
 linked_list.append(4)
 puts linked_list
 
+puts linked_list.size
