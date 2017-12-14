@@ -72,6 +72,16 @@ class LinkedList
     found_element
   end
 
+  def find(data)
+    current = @head
+    count = 0
+    until current.value == data || current.next_node == nil
+      current = current.next_node
+      count += 1
+    end
+    current.value == data ? count : nil
+  end
+
   # Displays a list of the nodes in a linked list in order, including value and next node pointer
   def to_s
     return_string = ''
@@ -113,5 +123,8 @@ puts "Linked list: #{linked_list}"
 # puts "Linked list tail: #{linked_list.tail}"
 # puts "Linked list at position 1 (expecting node with value 2): #{linked_list.at(1)}"
 # puts "Popping the linked list results in #{linked_list.pop} and changes linked list to #{linked_list}"
-puts "Linked list contains 3 (true): #{linked_list.contains?(3)}"
-puts "Linked list contains 9 (false): #{linked_list.contains?(9)}"
+# puts "Linked list contains 3 (true): #{linked_list.contains?(3)}"
+# puts "Linked list contains 9 (false): #{linked_list.contains?(9)}"
+# puts "Finding value 3 in linked list: at index #{linked_list.find(3)}"
+# puts "Finding value 4 in linked list: at index #{linked_list.find(4)}"
+# puts "Finding value 10 in linked list: at index #{linked_list.find(10)}"
